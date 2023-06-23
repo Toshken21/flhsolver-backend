@@ -7,6 +7,7 @@ const betaAccountSchema = require("./betaAccountsModel");
 const lightroomArticleSchema = require("./lightroomArticleModel");
 const lightroomImageSchema = require("./lightroomImagesModel");
 
+const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
 require("dotenv").config({path: "./config.env"});
@@ -44,7 +45,7 @@ const lightRoomImageRoutes = require("../server/routes/lightroomRoutes/lightroom
 app.use("/lightroomimage", lightRoomImageRoutes);
 
 // Start the server
-const server = app.listen(4000, () => {
+const server = app.listen(PORT, () => {
     console.log('Server started on port 4000');
 });
 
