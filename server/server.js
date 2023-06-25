@@ -10,6 +10,18 @@ const lightroomImageSchema = require("./lightroomImagesModel");
 const PORT = process.env.PORT || 4000;
 app.use(cors());
 app.use(express.json());
+
+// enforce https
+
+app.use(function(req, res, next) {
+  if (req.headers["x-forwarded-proto"] == "http") {
+    res.redirect("https://" + req.headers.host + req.url);
+  } else {
+    next();
+  }
+});
+
+
 require("dotenv").config({path: "./config.env"});
 const mongoose = require('mongoose');
 
