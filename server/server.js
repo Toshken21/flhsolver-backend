@@ -6,6 +6,7 @@ const cors = require("cors");
 const betaAccountSchema = require("./betaAccountsModel");
 const lightroomArticleSchema = require("./lightroomArticleModel");
 const lightroomImageSchema = require("./lightroomImagesModel");
+const newsletterSchema = require("./newsletterModel");
 
 const PORT = process.env.PORT || 4000;
 app.use(cors());
@@ -45,8 +46,8 @@ const conn2 = mongoose.createConnection(mongoURI2, {
 // Create models with specific connections
 const BetaAccount = conn1.model('BetaAccount', betaAccountSchema);
 const LightRoomArticle = conn2.model('LightRoomArticle', lightroomArticleSchema);
-const LightroomImage = conn2.model("LightRoomImage", lightroomImageSchema)
-;
+const LightroomImage = conn2.model("LightRoomImage", lightroomImageSchema);
+const Newsletter = conn2.model("Newsletter", newsletterSchema);
 
 // Import routes and pass in models
 const betaAccountRoutes = require("./routes/betaAccountsRoutes")(BetaAccount);
@@ -57,6 +58,9 @@ app.use("/lightroom", lightRoomArticleRoutes);
 
 const lightRoomImageRoutes = require("../server/routes/lightroomRoutes/lightroomImageRoutes")(LightroomImage);
 app.use("/lightroomimage", lightRoomImageRoutes);
+
+const newsletterRoutes = require("./routes/lightroomRoutes/newsletterRoutes/")(Newsletter);
+app.use("/newsletter", newsletterRoutes);
 
 // Start the server
 const server = app.listen(PORT, () => {
