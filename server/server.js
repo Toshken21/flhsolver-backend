@@ -9,7 +9,7 @@ const lightroomImageSchema = require("./lightroomImagesModel");
 const newsletterSchema = require("./newsletterModel");
 
 const PORT = process.env.PORT || 4000;
-app.use(cors());
+
 app.use(express.json());
 
 // enforce https
@@ -23,6 +23,8 @@ app.use(function(req, res, next) {
     next();
   }
 });
+
+app.use(cors());
 
 
 require("dotenv").config({path: "./config.env"});
