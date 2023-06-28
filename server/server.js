@@ -52,7 +52,7 @@ const LightroomImage = conn2.model("LightRoomImage", lightroomImageSchema);
 const Newsletter = conn2.model("Newsletter", newsletterSchema);
 
 // Import routes and pass in models
-const betaAccountRoutes = require("..server/routes/betaAccountsRoutes.js")(BetaAccount);
+const betaAccountRoutes = require("./routes/betaAccountsRoutes")(BetaAccount);
 app.use("/beta", betaAccountRoutes);
 
 const lightRoomArticleRoutes = require("../server/routes/lightroomRoutes/lightroomRoutes")(LightRoomArticle);
