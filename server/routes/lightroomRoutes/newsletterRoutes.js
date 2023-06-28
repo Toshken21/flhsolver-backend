@@ -23,7 +23,7 @@ module.exports = function(model) {
                     email: dePackage.email
                 });
 
-                newsLetter.save()
+                newsletterSubscription.save()
                 .then(() => res.status(201).json({message: "New subscriber added to the newsletter"}))
                 .catch((err) => {
                     console.log(err);
