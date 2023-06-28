@@ -9,7 +9,7 @@ const lightroomImageSchema = require("./lightroomImagesModel");
 const newsletterSchema = require("./newsletterModel");
 
 const PORT = process.env.PORT || 4000;
-
+app.use(cors());
 app.use(express.json());
 
 // enforce https
@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
   }
 });
 
-app.use(cors());
+
 
 
 require("dotenv").config({path: "./config.env"});
@@ -52,7 +52,7 @@ const LightroomImage = conn2.model("LightRoomImage", lightroomImageSchema);
 const Newsletter = conn2.model("Newsletter", newsletterSchema);
 
 // Import routes and pass in models
-const betaAccountRoutes = require("./routes/betaAccountsRoutes")(BetaAccount);
+const betaAccountRoutes = require("..server/routes/betaAccountsRoutes")(BetaAccount);
 app.use("/beta", betaAccountRoutes);
 
 const lightRoomArticleRoutes = require("../server/routes/lightroomRoutes/lightroomRoutes")(LightRoomArticle);
@@ -61,7 +61,7 @@ app.use("/lightroom", lightRoomArticleRoutes);
 const lightRoomImageRoutes = require("../server/routes/lightroomRoutes/lightroomImageRoutes")(LightroomImage);
 app.use("/lightroomimage", lightRoomImageRoutes);
 
-const newsletterRoutes = require("./routes/lightroomRoutes/newsletterRoutes/")(Newsletter);
+const newsletterRoutes = require("../server/routes/lightroomRoutes/newsletterRoutes/")(Newsletter);
 app.use("/newsletter", newsletterRoutes);
 
 // Start the server
