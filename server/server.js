@@ -61,7 +61,7 @@ app.use("/lightroom", lightRoomArticleRoutes);
 const lightRoomImageRoutes = require("../server/routes/lightroomRoutes/lightroomImageRoutes")(LightroomImage);
 app.use("/lightroomimage", lightRoomImageRoutes);
 
-const newsletterRoutes = require("../server/routes/lightroomRoutes/newsletterRoutes/")(Newsletter);
+const newsletterRoutes = require("../server/routes/lightroomRoutes/newsletterRoutes")(Newsletter);
 app.use("/newsletter", newsletterRoutes);
 
 // Start the server
