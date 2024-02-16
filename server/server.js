@@ -8,8 +8,13 @@ const lightroomArticleSchema = require("./lightroomArticleModel");
 const lightroomImageSchema = require("./lightroomImagesModel");
 const newsletterSchema = require("./newsletterModel");
 
+const corsOptions = {
+  origin: 'https://flhsolver-frontend-25f045ddd5f7.herokuapp.com',
+  optionsSuccessStatus: 200 // For legacy browser support
+};
+
 const PORT = process.env.PORT || 4000;
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // enforce https
@@ -52,8 +57,8 @@ const LightroomImage = conn2.model("LightRoomImage", lightroomImageSchema);
 const Newsletter = conn2.model("Newsletter", newsletterSchema);
 
 // Import routes and pass in models
-const betaAccountRoutes = require("./routes/betaAccountsRoutes")(BetaAccount);
-app.use("/beta", betaAccountRoutes);
+  const betaAccountRoutes = require("./routes/betaAccountsRoutes")(BetaAccount);
+  app.use("/beta", betaAccountRoutes);
 
 const lightRoomArticleRoutes = require("../server/routes/lightroomRoutes/lightroomRoutes")(LightRoomArticle);
 app.use("/lightroom", lightRoomArticleRoutes);
