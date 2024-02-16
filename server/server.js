@@ -19,7 +19,7 @@ app.use(express.json());
 
 // enforce https
 
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
   if (req.headers["x-forwarded-proto"] !== "https") {
     console.log("redirected to https");
     res.redirect("https://" + req.headers.host + req.url);
@@ -28,6 +28,8 @@ app.use(function(req, res, next) {
     next();
   }
 });
+
+*/
 
 
 
